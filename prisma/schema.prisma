@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Event {
+  id                String    @id @default(uuid())
+  name              String
+  start_date        DateTime  @db.Date
+  end_date          DateTime  @db.Date
+  trainer_id        String
+  course_id         String
+
+  enrollment        Enrollment[]
+
+  @@map("events")
+}
+
+model Enrollment {
+  id                String    @id @default(uuid())
+  employee_id       String
+  event_id          String
+
+  event             Event     @relation(fields: [event_id], references: [id], onDelete: Cascade)
+
+  @@map("enrollments")
+}
