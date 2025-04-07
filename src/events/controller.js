@@ -6,7 +6,7 @@ const expand = [
 ];
 
 const index = async (req, res) => {
-  const { data, meta } = await services.crud.index({ model: 'event', query: req.query, expand, search: ['name', 'start_date', 'end_date'], filters: ['start_date', 'end_date', 'course_id'] });
+  const { data, meta } = await services.crud.index({ model: 'event', query: req.query, expand, search: ['name', 'start_date', 'end_date'], filters: ['course_id', 'trainer_id'] });
   return services.response.send({ res, data, meta, message: 'the list of events has been successfully retrieved' });
 };
 
@@ -17,7 +17,7 @@ const show = async (req, res) => {
 };
 
 const store = async (req, res) => {
-  const data = await services.crud.store({ model: 'event', payload: req.body, keys: ['name', 'start_date', 'end_date', 'course_id'] });
+  const data = await services.crud.store({ model: 'event', payload: req.body, keys: ['name', 'start_date', 'end_date', 'course_id', 'trainer_id'] });
   return services.response.send({ res, data, message: 'event created successfully' });
 };
 
