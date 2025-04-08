@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { services } from '../shared/services/index.js';
 
 const include = [{ key: 'event_id', name: 'event' }];
@@ -20,7 +21,7 @@ const store = async (req, res) => {
 };
 
 const update = async (req, res) => {
-  const data = await services.crud.update({ model: 'enrollment', id: req.params.id, payload: req.body, keys: ['employee_id', 'event_id'] });
+  const data = await services.crud.update({ model: 'enrollment', id: req.params.id, payload: req.body });
   return services.response.send({ res, data, message: 'enrollment updated successfully' });
 };
 
