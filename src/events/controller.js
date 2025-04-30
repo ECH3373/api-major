@@ -1,8 +1,8 @@
 import { services } from '../shared/services/index.js';
 
 const expand = [
-  { key: 'trainer_id', name: 'trainer', endpoint: 'http://82.29.197.244:8080/employees' },
-  { key: 'course_id', name: 'course', endpoint: 'http://82.29.197.244:8080/courses/courses' },
+  { key: 'trainer_id', name: 'trainer', endpoint: '/employees' },
+  { key: 'course_id', name: 'course', endpoint: 's://gateway.stullerlandcommunity.com/courses/courses' },
 ];
 
 const index = async (req, res) => {
