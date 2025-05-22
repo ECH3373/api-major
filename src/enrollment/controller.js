@@ -1,7 +1,7 @@
 import { services } from '../shared/services/index.js';
 
 const include = [{ key: 'event_id', name: 'event' }];
-const expand = [{ key: 'defect_id', name: 'defect', endpoint: 'https://gateway.stullerlandcommunity.com/defects' }, { key: 'piece_id', name: 'piece', endpoint: 'https://gateway.stullerlandcommunity.com/courses/resources' }];
+const expand = [{ key: 'employee_id', name: 'employee', endpoint: 'https://gateway.stullerlandcommunity.com/employees' }];
 
 const index = async (req, res) => {
   const { data, meta } = await services.crud.index({ model: 'enrollment', query: req.query, expand, include, search: ['employee_id', 'event_id'], filters: ['employee_id', 'event_id'] });
