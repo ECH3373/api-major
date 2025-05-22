@@ -36,3 +36,25 @@ model login {
 
   @@map("login")
 }
+
+model Piece {
+  id          String @id @default(uuid())
+  resource_id String
+  employee_id String
+
+  dot Dot[]
+
+  @@map("pieces")
+}
+
+model Dot {
+  id         String @id @default(uuid())
+  position_x String
+  position_y String
+  defect_id  String
+  piece_id   String
+
+  piece Piece @relation(fields: [piece_id], references: [id], onDelete: Cascade)
+
+  @@map("dots")
+}
